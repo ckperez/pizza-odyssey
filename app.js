@@ -1,7 +1,7 @@
 var timeArray = [];
 var am8, am9, am10, am11, pm12, pm1, pm2, pm3, pm4, pm5, pm6, pm7, pm8, pm9, pm10, pm11, am12, am1;
 var ballardStore, firstHillStore, internationalStore, sluStore, georgetownStore, ravennaStore;
-var driverNum;
+var driverNum, driversRecOutput;;
 
 function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -155,13 +155,18 @@ ravennaStore = {
 
 function howManyDeliveryBoys(zaDelivered){
   driverNum = Math.ceil(zaDelivered / 3);
-  return driverNum;
+  if (driverNum === 0) {
+    driversRecOutput = '[ driver not recommended ]';
+  } else {
+    driversRecOutput = '[ drivers recommended: ' + driverNum + ' ]';
+  }
+  return driversRecOutput;
 };
 
-function driversRecommended(driverNum) {
-  if (driverNum === 0) {
-    return '[ driver not recommended ]';
-  } else {
-    return '[ drivers recommended: ' + driverNum + ' ]';
-  }
-};
+var liTag = document.createElement('li');
+
+//liTag.setAttribute('id', 'ballard1');
+
+liTag.textContent = ballardStore.salesData[i].hour + ' ' + ballardStore.salesData[0].zaSold + ' pizzas, ' + ballardStore.salesData[i].zaDelivered + ' deliveries -- ' + driversRecOutput;
+
+document.getElementById('locBallard').appendChild(liTag);

@@ -2,6 +2,29 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,900,100);
 
 body {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
   font-family: 'Roboto', sans-serif;
   background-color: #F9F9F9;
+}
+
+p, li {
+  color: #515151;
+}
+
+li {
+  list-style: none;
+}
+
+article h1 {
+  color: #FF4D00;
+  background-color: #515151;
+}
+
+header {
+  margin-bottom: 20px;
+  background-color: #FF4D00;
+  padding: 5px;
 }

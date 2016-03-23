@@ -1,0 +1,7 @@
+/* pallette: grey(#515151), nearly black (#131313), nearly white (#F9F9F9), bright orange (#FF4D00), red-orange (#FF4000) */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,900,100);
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #F9F9F9;
+}

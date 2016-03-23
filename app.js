@@ -1,3 +1,7 @@
+//Public Page Stuff Below Here
+
+//Public Page Stuff Above Here
+
 var timeArray = [];
 var am8, am9, am10, am11, pm12, pm1, pm2, pm3, pm4, pm5, pm6, pm7, pm8, pm9, pm10, pm11, am12, am1;
 var ballardStore, firstHillStore, internationalStore, sluStore, georgetownStore, ravennaStore;
@@ -6,6 +10,17 @@ var driverNum, driversRecOutput;;
 function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
+function howManyDeliveryBoys(zaDelivered){
+  driverNum = Math.ceil(zaDelivered / 3);
+  if (driverNum === 0) {
+    driversRecOutput = '[ driver not recommended ]';
+  } else {
+    driversRecOutput = '[ drivers recommended: ' + driverNum + ' ]';
+  }
+  return driversRecOutput;
+};
+
 //first block of 3 hours: 8-11, zaSold(0,4), zaDelivered(0,4)
 am8 = {
   hour: '8:00am',
@@ -152,21 +167,39 @@ ravennaStore = {
   salesData: timeArray,
   storeHours: '8:00am to 2:00am, Tuesday - Sunday, Closed on Mondays.'
 };
-
-function howManyDeliveryBoys(zaDelivered){
-  driverNum = Math.ceil(zaDelivered / 3);
-  if (driverNum === 0) {
-    driversRecOutput = '[ driver not recommended ]';
-  } else {
-    driversRecOutput = '[ drivers recommended: ' + driverNum + ' ]';
-  }
-  return driversRecOutput;
+//populate ballard list
+for (var i = 0; i < timeArray.length; i++) {
+  var liTag = document.createElement('li');
+  liTag.textContent = ballardStore.salesData[i].hour + ' ' + ballardStore.salesData[i].zaSold + ' pizzas, ' + ballardStore.salesData[i].zaDelivered + ' deliveries ' + driversRecOutput;
+  document.getElementById('locBallard').appendChild(liTag);
 };
-
-var liTag = document.createElement('li');
-
-//liTag.setAttribute('id', 'ballard1');
-
-liTag.textContent = ballardStore.salesData[i].hour + ' ' + ballardStore.salesData[0].zaSold + ' pizzas, ' + ballardStore.salesData[i].zaDelivered + ' deliveries -- ' + driversRecOutput;
-
-document.getElementById('locBallard').appendChild(liTag);
+//populate first hill list
+for (var i = 0; i < timeArray.length; i++) {
+  var liTag = document.createElement('li');
+  liTag.textContent = firstHillStore.salesData[i].hour + ' ' + firstHillStore.salesData[i].zaSold + ' pizzas, ' + firstHillStore.salesData[i].zaDelivered + ' deliveries ' + driversRecOutput;
+  document.getElementById('locFirstHill').appendChild(liTag);
+};
+//populate International list
+for (var i = 0; i < timeArray.length; i++) {
+  var liTag = document.createElement('li');
+  liTag.textContent = internationalStore.salesData[i].hour + ' ' + internationalStore.salesData[i].zaSold + ' pizzas, ' + internationalStore.salesData[i].zaDelivered + ' deliveries ' + driversRecOutput;
+  document.getElementById('locInternational').appendChild(liTag);
+};
+//populate slu list
+for (var i = 0; i < timeArray.length; i++) {
+  var liTag = document.createElement('li');
+  liTag.textContent = sluStore.salesData[i].hour + ' ' + sluStore.salesData[i].zaSold + ' pizzas, ' + sluStore.salesData[i].zaDelivered + ' deliveries ' + driversRecOutput;
+  document.getElementById('locSLU').appendChild(liTag);
+};
+//populate georgetown list
+for (var i = 0; i < timeArray.length; i++) {
+  var liTag = document.createElement('li');
+  liTag.textContent = georgetownStore.salesData[i].hour + ' ' + georgetownStore.salesData[i].zaSold + ' pizzas, ' + georgetownStore.salesData[i].zaDelivered + ' deliveries ' + driversRecOutput;
+  document.getElementById('locGeorgetown').appendChild(liTag);
+};
+//populate ravenna list
+for (var i = 0; i < timeArray.length; i++) {
+  var liTag = document.createElement('li');
+  liTag.textContent = ravennaStore.salesData[i].hour + ' ' + ravennaStore.salesData[i].zaSold + ' pizzas, ' + ravennaStore.salesData[i].zaDelivered + ' deliveries ' + driversRecOutput;
+  document.getElementById('locRavenna').appendChild(liTag);
+};

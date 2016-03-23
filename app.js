@@ -1,235 +1,152 @@
-var storeArray = [];
-var timeArray = [];
-var am8, am9, am10, am11, pm12, pm1, pm2, pm3, pm4, pm5, pm6, pm7, pm8, pm9, pm10, pm11, am12, am1;
-var ballardStore, firstHillStore, internationalStore, sluStore, georgetownStore, ravennaStore;
-var driverNum, driversRecOutput;;
-
+//random number function used to generate pizza sold and delivered numbers
 function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-function howManyDeliveryBoys(zaDelivered){
-  driverNum = Math.ceil(zaDelivered / 3);
-  if (driverNum === 0) {
-    driversRecOutput = '[ driver not recommended ]';
-  } else {
-    driversRecOutput = '[ drivers recommended: ' + driverNum + ' ]';
-  }
-  return driversRecOutput;
-};
-
-//Public Page Stuff Below Here
-var numOdysseys = 0;
-//created function that loops through a store's data to add up pizzas sold
-function totalZa(store){
-  for (var i = 0; i < timeArray.length; i++) {
-    numOdysseys += store.timeArray[i].zaSold;
-  }
 }
-//loop through array of stores and call pizza adding function from above for each
-// for (var i = 0; i < storeArray.length; i++){
-//   totalZa(storeArray[i]);
-// }
-//
-// if ('odysseys'){
-//   document.getElementById('odysseys').textContent = numOdysseys + ' happy pizza odysseys this week!';
-// }
-//
-// if ('store-details'){
-//   for (var i = 0; i < storeArray.length; i++) {
-//     var liTag = document.createElement('li');
-//     liTag.textContent = 'The ' + storeArray[i].name + ' is open from ' + storeArray[i].storeHours;
-//     document.getElementById('store-details').appendChild(liTag);
-//   }
-// }
-//Public Page Stuff Above Here
+//constructor function for pizza store locations
+function PizzaLocation(name){
+  this.name = name;
+  this.hourlySalesData = [];
+}
+//constructor function for hourly sales data that will go into each store 18x
+function HourlySalesData(time, minSold, maxSold, minDelivered, maxDelivered){
+  this.time = time;
+  this.pizzaSold = getRandomIntInclusive(minSold, maxSold);
+  this.pizzaDelivered = getRandomIntInclusive(minDelivered, maxDelivered);
+  this.driversNeeded = Math.ceil(this.pizzaDelivered / 3);
+}
 
-//first block of 3 hours: 8-11, zaSold(0,4), zaDelivered(0,4)
-am8 = {
-  hour: '8:00am',
-  zaSold: getRandomIntInclusive(0,4),
-  zaDelivered: getRandomIntInclusive(0,4)
+//method on the prototype of PizzaLocation to push HourlySalesData into array
+PizzaLocation.prototype.pushHourlySalesData = function(data){
+  this.hourlySalesData.push(data);
 };
+//creating Ballard with constructor
+var ballard = new PizzaLocation('Ballard');
+//calling the pushHourlySalesData method with completed HourlySalesData constructor as data
+ballard.pushHourlySalesData(new HourlySalesData('8:00 am', 0, 3, 1, 7));
+ballard.pushHourlySalesData(new HourlySalesData('9:00 am', 0, 3, 1, 7));
+ballard.pushHourlySalesData(new HourlySalesData('10:00 am', 0, 3, 1, 7));
+ballard.pushHourlySalesData(new HourlySalesData('11:00 am', 5, 10, 2, 8));
+ballard.pushHourlySalesData(new HourlySalesData('12:00 pm', 5, 10, 2, 8));
+ballard.pushHourlySalesData(new HourlySalesData('1:00 pm', 5, 10, 2, 8));
+ballard.pushHourlySalesData(new HourlySalesData('2:00 pm', 2, 13, 1, 7));
+ballard.pushHourlySalesData(new HourlySalesData('3:00 pm', 2, 13, 1, 7));
+ballard.pushHourlySalesData(new HourlySalesData('4:00 pm', 2, 13, 1, 7));
+ballard.pushHourlySalesData(new HourlySalesData('5:00 pm', 0, 15, 2, 9));
+ballard.pushHourlySalesData(new HourlySalesData('6:00 pm', 0, 15, 2, 9));
+ballard.pushHourlySalesData(new HourlySalesData('7:00 pm', 0, 15, 2, 9));
+ballard.pushHourlySalesData(new HourlySalesData('8:00 pm', 1, 3, 4, 12));
+ballard.pushHourlySalesData(new HourlySalesData('9:00 pm', 1, 3, 4, 12));
+ballard.pushHourlySalesData(new HourlySalesData('10:00 pm', 1, 3, 4, 12));
+ballard.pushHourlySalesData(new HourlySalesData('11:00 pm', 8, 15, 6, 16));
+ballard.pushHourlySalesData(new HourlySalesData('12:00 am', 8, 15, 6, 16));
+ballard.pushHourlySalesData(new HourlySalesData('1:00 am', 8, 15, 6, 16));
 
-am9 = {
-  hour: '9:00am',
-  zaSold: getRandomIntInclusive(0,4),
-  zaDelivered: getRandomIntInclusive(0,4)
-};
+//creating First Hill with constructor
+var firstHill = new PizzaLocation('First Hill');
+//calling the pushHourlySalesData method with completed HourlySalesData constructor as data
+firstHill.pushHourlySalesData(new HourlySalesData('8:00 am', 1, 3, 1, 7));
+firstHill.pushHourlySalesData(new HourlySalesData('9:00 am', 1, 3, 1, 7));
+firstHill.pushHourlySalesData(new HourlySalesData('10:00 am', 1, 3, 1, 7));
+firstHill.pushHourlySalesData(new HourlySalesData('11:00 am', 5, 9, 2, 8));
+firstHill.pushHourlySalesData(new HourlySalesData('12:00 pm', 5, 9, 2, 8));
+firstHill.pushHourlySalesData(new HourlySalesData('1:00 pm', 5, 9, 2, 8));
+firstHill.pushHourlySalesData(new HourlySalesData('2:00 pm', 2, 13, 1, 6));
+firstHill.pushHourlySalesData(new HourlySalesData('3:00 pm', 2, 13, 1, 6));
+firstHill.pushHourlySalesData(new HourlySalesData('4:00 pm', 2, 13, 1, 6));
+firstHill.pushHourlySalesData(new HourlySalesData('5:00 pm', 18, 32, 3, 9));
+firstHill.pushHourlySalesData(new HourlySalesData('6:00 pm', 18, 32, 3, 9));
+firstHill.pushHourlySalesData(new HourlySalesData('7:00 pm', 18, 32, 3, 9));
+firstHill.pushHourlySalesData(new HourlySalesData('8:00 pm', 1, 3, 5, 12));
+firstHill.pushHourlySalesData(new HourlySalesData('9:00 pm', 1, 3, 5, 12));
+firstHill.pushHourlySalesData(new HourlySalesData('10:00 pm', 1, 3, 5, 12));
+firstHill.pushHourlySalesData(new HourlySalesData('11:00 pm', 8, 20, 6, 16));
+firstHill.pushHourlySalesData(new HourlySalesData('12:00 am', 8, 20, 6, 16));
+firstHill.pushHourlySalesData(new HourlySalesData('1:00 am', 8, 20, 6, 16));
 
-am10 = {
-  hour: '10:00am',
-  zaSold: getRandomIntInclusive(0,4),
-  zaDelivered: getRandomIntInclusive(0,4)
-};
-//second block of hours: 11-2, zaSold(0,7), zaDelivered(0,4)
-am11 = {
-  hour: '11:00am',
-  zaSold: getRandomIntInclusive(0,7),
-  zaDelivered: getRandomIntInclusive(0,4)
-};
+//creating International District with constructor
+var international = new PizzaLocation('International District');
+//calling the pushHourlySalesData method with completed HourlySalesData constructor as data
+international.pushHourlySalesData(new HourlySalesData('8:00 am', 0, 4, 0, 4));
+international.pushHourlySalesData(new HourlySalesData('9:00 am', 0, 4, 0, 4));
+international.pushHourlySalesData(new HourlySalesData('10:00 am', 0, 4, 0, 4));
+international.pushHourlySalesData(new HourlySalesData('11:00 am', 0, 7, 0, 4));
+international.pushHourlySalesData(new HourlySalesData('12:00 pm', 0, 7, 0, 4));
+international.pushHourlySalesData(new HourlySalesData('1:00 pm', 0, 7, 0, 4));
+international.pushHourlySalesData(new HourlySalesData('2:00 pm', 2, 15, 1, 4));
+international.pushHourlySalesData(new HourlySalesData('3:00 pm', 2, 15, 1, 4));
+international.pushHourlySalesData(new HourlySalesData('4:00 pm', 2, 15, 1, 4));
+international.pushHourlySalesData(new HourlySalesData('5:00 pm', 10, 26, 4, 6));
+international.pushHourlySalesData(new HourlySalesData('6:00 pm', 10, 26, 4, 6));
+international.pushHourlySalesData(new HourlySalesData('7:00 pm', 10, 26, 4, 6));
+international.pushHourlySalesData(new HourlySalesData('8:00 pm', 8, 22, 7, 15));
+international.pushHourlySalesData(new HourlySalesData('9:00 pm', 8, 22, 7, 15));
+international.pushHourlySalesData(new HourlySalesData('10:00 pm', 8, 22, 7, 15));
+international.pushHourlySalesData(new HourlySalesData('11:00 pm', 0, 2, 2, 8));
+international.pushHourlySalesData(new HourlySalesData('12:00 am', 0, 2, 2, 8));
+international.pushHourlySalesData(new HourlySalesData('1:00 am', 0, 2, 2, 8));
 
-pm12 = {
-  hour: '12:00pm',
-  zaSold: getRandomIntInclusive(0,7),
-  zaDelivered: getRandomIntInclusive(0,4)
-};
+//creating South Lake Union with constructor
+var slu = new PizzaLocation('South Lake Union');
+//calling the pushHourlySalesData method with completed HourlySalesData constructor as data
+slu.pushHourlySalesData(new HourlySalesData('8:00 am', 0, 4, 0, 4));
+slu.pushHourlySalesData(new HourlySalesData('9:00 am', 0, 4, 0, 4));
+slu.pushHourlySalesData(new HourlySalesData('10:00 am', 0, 4, 0, 4));
+slu.pushHourlySalesData(new HourlySalesData('11:00 am', 0, 7, 0, 4));
+slu.pushHourlySalesData(new HourlySalesData('12:00 pm', 0, 7, 0, 4));
+slu.pushHourlySalesData(new HourlySalesData('1:00 pm', 0, 7, 0, 4));
+slu.pushHourlySalesData(new HourlySalesData('2:00 pm', 5, 15, 0, 4));
+slu.pushHourlySalesData(new HourlySalesData('3:00 pm', 5, 15, 0, 4));
+slu.pushHourlySalesData(new HourlySalesData('4:00 pm', 5, 15, 0, 4));
+slu.pushHourlySalesData(new HourlySalesData('5:00 pm', 25, 39, 13, 18));
+slu.pushHourlySalesData(new HourlySalesData('6:00 pm', 25, 39, 13, 18));
+slu.pushHourlySalesData(new HourlySalesData('7:00 pm', 25, 39, 13, 18));
+slu.pushHourlySalesData(new HourlySalesData('8:00 pm', 22, 36, 5, 22));
+slu.pushHourlySalesData(new HourlySalesData('9:00 pm', 22, 36, 5, 22));
+slu.pushHourlySalesData(new HourlySalesData('10:00 pm', 22, 36, 5, 22));
+slu.pushHourlySalesData(new HourlySalesData('11:00 pm', 5, 21, 16, 31));
+slu.pushHourlySalesData(new HourlySalesData('12:00 am', 5, 21, 16, 31));
+slu.pushHourlySalesData(new HourlySalesData('1:00 am', 5, 21, 16, 31));
 
-pm1 = {
-  hour: '1:00pm',
-  zaSold: getRandomIntInclusive(0,7),
-  zaDelivered: getRandomIntInclusive(0,4)
-};
-//third block of hours: 2-5, zaSold(2,15), zaDelivered(1,4)
-pm2 = {
-  hour: '2:00pm',
-  zaSold: getRandomIntInclusive(2,15),
-  zaDelivered: getRandomIntInclusive(1,4)
-};
+//creating Georgetown with constructor
+var georgetown = new PizzaLocation('Georgetown');
+//calling the pushHourlySalesData method with completed HourlySalesData constructor as data
+georgetown.pushHourlySalesData(new HourlySalesData('8:00 am', 2, 7, 3, 5));
+georgetown.pushHourlySalesData(new HourlySalesData('9:00 am', 2, 7, 3, 5));
+georgetown.pushHourlySalesData(new HourlySalesData('10:00 am', 2, 7, 3, 5));
+georgetown.pushHourlySalesData(new HourlySalesData('11:00 am', 3, 8, 3, 9));
+georgetown.pushHourlySalesData(new HourlySalesData('12:00 pm', 3, 8, 3, 9));
+georgetown.pushHourlySalesData(new HourlySalesData('1:00 pm', 3, 8, 3, 9));
+georgetown.pushHourlySalesData(new HourlySalesData('2:00 pm', 1, 5, 1, 4));
+georgetown.pushHourlySalesData(new HourlySalesData('3:00 pm', 1, 5, 1, 4));
+georgetown.pushHourlySalesData(new HourlySalesData('4:00 pm', 1, 5, 1, 4));
+georgetown.pushHourlySalesData(new HourlySalesData('5:00 pm', 5, 13, 2, 4));
+georgetown.pushHourlySalesData(new HourlySalesData('6:00 pm', 5, 13, 2, 4));
+georgetown.pushHourlySalesData(new HourlySalesData('7:00 pm', 5, 13, 2, 4));
+georgetown.pushHourlySalesData(new HourlySalesData('8:00 pm', 22, 41, 15, 42));
+georgetown.pushHourlySalesData(new HourlySalesData('9:00 pm', 22, 41, 15, 42));
+georgetown.pushHourlySalesData(new HourlySalesData('10:00 pm', 22, 41, 15, 42));
+georgetown.pushHourlySalesData(new HourlySalesData('11:00 pm', 15, 20, 6, 21));
+georgetown.pushHourlySalesData(new HourlySalesData('12:00 am', 15, 20, 6, 21));
+georgetown.pushHourlySalesData(new HourlySalesData('1:00 am', 15, 20, 6, 21));
 
-pm3 = {
-  hour: '3:00pm',
-  zaSold: getRandomIntInclusive(2,15),
-  zaDelivered: getRandomIntInclusive(1,4)
-};
-
-pm4 = {
-  hour: '4:00pm',
-  zaSold: getRandomIntInclusive(2,15),
-  zaDelivered: getRandomIntInclusive(1,4)
-};
-//fourth block of hours: 5-8, zaSold(15,35), zaDelivered(3,8)
-pm5 = {
-  hour: '5:00pm',
-  zaSold: getRandomIntInclusive(15,35),
-  zaDelivered: getRandomIntInclusive(3,8)
-};
-
-pm6 = {
-  hour: '6:00pm',
-  zaSold: getRandomIntInclusive(15,35),
-  zaDelivered: getRandomIntInclusive(3,8)
-};
-
-pm7 = {
-  hour: '7:00pm',
-  zaSold: getRandomIntInclusive(15,35),
-  zaDelivered: getRandomIntInclusive(3,8)
-};
-//fifth block of hours: 8-11pm, zaSold(12,31), zaDelivered(5,12)
-pm8 = {
-  hour: '8:00pm',
-  zaSold: getRandomIntInclusive(12,31),
-  zaDelivered: getRandomIntInclusive(5,12)
-};
-
-pm9 = {
-  hour: '9:00pm',
-  zaSold: getRandomIntInclusive(12,31),
-  zaDelivered: getRandomIntInclusive(5,12)
-};
-
-pm10 = {
-  hour: '10:00pm',
-  zaSold: getRandomIntInclusive(12,31),
-  zaDelivered: getRandomIntInclusive(5,12)
-};
-//sixth block of hours: 11-2pm, zaSold(5,20), zaDelivered(6,11)
-pm11 = {
-  hour: '11:00pm',
-  zaSold: getRandomIntInclusive(5,20),
-  zaDelivered: getRandomIntInclusive(6,11)
-};
-
-am12 = {
-  hour: '12:00am',
-  zaSold: getRandomIntInclusive(5,20),
-  zaDelivered: getRandomIntInclusive(6,11)
-};
-
-am1 = {
-  hour: '1:00am',
-  zaSold: getRandomIntInclusive(5,20),
-  zaDelivered: getRandomIntInclusive(6,11)
-};
-
-timeArray.push(am8, am9, am10, am11, pm12, pm1, pm2, pm3, pm4, pm5, pm6, pm7, pm8, pm9, pm10, pm11, am12, am1);
-
-ballardStore = {
-  name: 'Ballard',
-  salesData: timeArray,
-  storeHours: '8:00am to 2:00am, Tuesday - Sunday, Closed on Mondays.'
-};
-
-firstHillStore = {
-  name: 'First Hill',
-  salesData: timeArray,
-  storeHours: '8:00am to 2:00am, Tuesday - Sunday, Closed on Mondays.'
-};
-
-internationalStore = {
-  name: 'International District',
-  salesData: timeArray,
-  storeHours: '8:00am to 2:00am, Tuesday - Sunday, Closed on Mondays.'
-};
-
-sluStore = {
-  name: 'South Lake Union',
-  salesData: timeArray,
-  storeHours: '8:00am to 2:00am, Tuesday - Sunday, Closed on Mondays.'
-};
-
-georgetownStore = {
-  name: 'Georgetown',
-  salesData: timeArray,
-  storeHours: '8:00am to 2:00am, Tuesday - Sunday, Closed on Mondays.'
-};
-
-ravennaStore = {
-  name: 'Ravenna',
-  salesData: timeArray,
-  storeHours: '8:00am to 2:00am, Tuesday - Sunday, Closed on Mondays.'
-};
-
-storeArray.push(ballardStore, firstHillStore, internationalStore, sluStore, georgetownStore, ravennaStore);
-
-//populate ballard list
-for (var i = 0; i < timeArray.length; i++) {
-  var liTag = document.createElement('li');
-  liTag.textContent = ballardStore.salesData[i].hour + ' ' + ballardStore.salesData[i].zaSold + ' pizzas, ' + ballardStore.salesData[i].zaDelivered + ' deliveries ' + driversRecOutput;
-  document.getElementById('locBallard').appendChild(liTag);
-};
-//populate first hill list
-for (var i = 0; i < timeArray.length; i++) {
-  var liTag = document.createElement('li');
-  liTag.textContent = firstHillStore.salesData[i].hour + ' ' + firstHillStore.salesData[i].zaSold + ' pizzas, ' + firstHillStore.salesData[i].zaDelivered + ' deliveries ' + driversRecOutput;
-  document.getElementById('locFirstHill').appendChild(liTag);
-};
-//populate International list
-
-for (var i = 0; i < timeArray.length; i++) {
-  var liTag = document.createElement('li');
-  liTag.textContent = internationalStore.salesData[i].hour + ' ' + internationalStore.salesData[i].zaSold + ' pizzas, ' + internationalStore.salesData[i].zaDelivered + ' deliveries ' + driversRecOutput;
-  document.getElementById('locInternational').appendChild(liTag);
-};
-//populate slu list
-
-for (var i = 0; i < timeArray.length; i++) {
-  var liTag = document.createElement('li');
-  liTag.textContent = sluStore.salesData[i].hour + ' ' + sluStore.salesData[i].zaSold + ' pizzas, ' + sluStore.salesData[i].zaDelivered + ' deliveries ' + driversRecOutput;
-  document.getElementById('locSLU').appendChild(liTag);
-};
-//populate georgetown list
-
-for (var i = 0; i < timeArray.length; i++) {
-  var liTag = document.createElement('li');
-  liTag.textContent = georgetownStore.salesData[i].hour + ' ' + georgetownStore.salesData[i].zaSold + ' pizzas, ' + georgetownStore.salesData[i].zaDelivered + ' deliveries ' + driversRecOutput;
-  document.getElementById('locGeorgetown').appendChild(liTag);
-};
-
-//populate ravenna list
-for (var i = 0; i < timeArray.length; i++) {
-  var liTag = document.createElement('li');
-  liTag.textContent = ravennaStore.salesData[i].hour + ' ' + ravennaStore.salesData[i].zaSold + ' pizzas, ' + ravennaStore.salesData[i].zaDelivered + ' deliveries ' + driversRecOutput;
-  document.getElementById('locRavenna').appendChild(liTag);
-};
+//creating Ravenna with constructor
+var ravenna = new PizzaLocation('Ravenna');
+//calling the pushHourlySalesData method with completed HourlySalesData constructor as data
+ravenna.pushHourlySalesData(new HourlySalesData('8:00 am', 0, 4, 0, 4));
+ravenna.pushHourlySalesData(new HourlySalesData('9:00 am', 0, 4, 0, 4));
+ravenna.pushHourlySalesData(new HourlySalesData('10:00 am', 0, 4, 0, 4));
+ravenna.pushHourlySalesData(new HourlySalesData('11:00 am', 0, 7, 0, 4));
+ravenna.pushHourlySalesData(new HourlySalesData('12:00 pm', 0, 7, 0, 4));
+ravenna.pushHourlySalesData(new HourlySalesData('1:00 pm', 0, 7, 0, 4));
+ravenna.pushHourlySalesData(new HourlySalesData('2:00 pm', 2, 15, 1, 4));
+ravenna.pushHourlySalesData(new HourlySalesData('3:00 pm', 2, 15, 1, 4));
+ravenna.pushHourlySalesData(new HourlySalesData('4:00 pm', 2, 15, 1, 4));
+ravenna.pushHourlySalesData(new HourlySalesData('5:00 pm', 6, 9, 5, 18));
+ravenna.pushHourlySalesData(new HourlySalesData('6:00 pm', 6, 9, 5, 18));
+ravenna.pushHourlySalesData(new HourlySalesData('7:00 pm', 6, 9, 5, 18));
+ravenna.pushHourlySalesData(new HourlySalesData('8:00 pm', 4, 8, 2, 5));
+ravenna.pushHourlySalesData(new HourlySalesData('9:00 pm', 4, 8, 2, 5));
+ravenna.pushHourlySalesData(new HourlySalesData('10:00 pm', 4, 8, 2, 5));
+ravenna.pushHourlySalesData(new HourlySalesData('11:00 pm', 2, 4, 3, 11));
+ravenna.pushHourlySalesData(new HourlySalesData('12:00 am', 2, 4, 3, 11));
+ravenna.pushHourlySalesData(new HourlySalesData('1:00 am', 2, 4, 3, 11));

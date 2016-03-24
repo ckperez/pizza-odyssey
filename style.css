@@ -45,6 +45,10 @@ aside {
   text-align: justify;
 }
 
+form {
+  margin-bottom: 20px;
+}
+
 label, input {
   margin: 6px;
 }

@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <article>
+    <article id="salesDataArticle">
       <section>
         <table id="ballardTable">
           <h1 class="locationName">Ballard</h1>
@@ -72,23 +72,24 @@
           </tr>
         </table>
       </section>
-      <section>
-        <table id="fremontTable">
-          <h1 class="locationName">Fremont</h1>
-          <tr>
-            <th>Time</th>
-            <th>Pizzas Sold</th>
-            <th>Pizzas Delivered</th>
-            <th>Drivers Recommended</th>
-          </tr>
-        </table>
-      </section>
     </article>
     <aside>
-      <form id="updateFremontForm">
+      <form id="createStoreForm">
         <fieldset>
-          <legend>New Info for Fremont</legend>
-
+          <legend>Create Table for New Store</legend>
+          <label name="storeNameForm">Name of Store Location</label>
+          <br />
+          <input name="storeNameForm" type="text">
+          <button type="submit">Create New Store Location</button>
+        </fieldset>
+      </form>
+      <form id="updateNewStoreForm">
+        <fieldset>
+          <legend>New Info for Store</legend>
+          <label name="whichStore">Which store is this for?</label>
+          <br />
+          <input name="whichStore" type="text" placeholder="Must be as displayed above table">
+          <br />
           <label name="hourForm">Business Hour:</label>
           <br />
           <input name="hourForm" type="text" placeholder="Example: 11:00 am">

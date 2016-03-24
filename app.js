@@ -1,5 +1,5 @@
-var ballard, firstHill, international, sLU, georgetown, ravenna;
-var locationsArray = [ballard, firstHill, international, sLU, georgetown, ravenna];
+var ballard, firstHill, international, sLU, georgetown, ravenna, fremont;
+var locationsArray = [ballard, firstHill, international, sLU, georgetown, ravenna, fremont];
 var pizzaOdysseys = 0;
 var odysseysID = document.getElementById('odysseys');
 var ballardTableID = document.getElementById('ballardTable');
@@ -185,6 +185,26 @@ if (ballardTableID || firstHillTableID || internationalTableID || sluTableID || 
   makeTable(georgetown, 'georgetownTable');
   makeTable(ravenna, 'ravennaTable');
 }
+
+
+//TEMPORARY SPOT FOR NEW TABLE CODE BELOW
+var storeNameInput = document.getElementById('createStoreForm');
+
+function useStoreConstructor(event){
+  event.preventDefault();
+  
+}
+
+
+
+storeNameInput.addEventListener('submit', useStoreConstructor);
+
+
+
+
+
+//TEMPORARY SPOT FOR NEW TABLE CODE BELOW
+
 
 ////SALES-DATA DOM STUFF ABOVE HERE
 

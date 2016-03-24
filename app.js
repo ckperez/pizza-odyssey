@@ -1,6 +1,13 @@
 var ballard, firstHill, international, sLU, georgetown, ravenna;
 var locationsArray = [ballard, firstHill, international, sLU, georgetown, ravenna];
 var pizzaOdysseys = 0;
+var odysseysID = document.getElementById('odysseys');
+var ballardTableID = document.getElementById('ballardTable');
+var firstHillTableID = document.getElementById('firstHillTable');
+var internationalTableID = document.getElementById('internationalTable');
+var sluTableID = document.getElementById('sluTable');
+var georgetownTableID = document.getElementById('georgetownTable');
+var ravennaTableID = document.getElementById('ravennaTable');
 //random number function used to generate pizza sold and delivered numbers
 function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -148,44 +155,54 @@ ravenna.pushHourlySalesData(new HourlySalesData('11:00 pm', 2, 4, 3, 11));
 ravenna.pushHourlySalesData(new HourlySalesData('12:00 am', 2, 4, 3, 11));
 ravenna.pushHourlySalesData(new HourlySalesData('1:00 am', 2, 4, 3, 11));
 
-function generateRowData(inputArray){
-  var row = document.createElement('tr');
-  var col;
-  for (var i = 0; i < inputArray.length; i++){
-    col = document.createElement('td');
-    col.textContent = inputArray[i];
-    row.appendChild(col);
+
+////SALES-DATA DOM STUFF BELOW HERE
+if (ballardTableID || firstHillTableID || internationalTableID || sluTableID || georgetownTableID || ravennaTableID){
+  function generateRowData(inputArray){
+    var row = document.createElement('tr');
+    var col;
+    for (var i = 0; i < inputArray.length; i++){
+      col = document.createElement('td');
+      col.textContent = inputArray[i];
+      row.appendChild(col);
+    }
+    return row;
   }
-  return row;
+
+  function makeTable(storeLocation, storeID){
+
+    var someTable = document.getElementById(storeID);
+    for (var i = 0; i < storeLocation.hourlySalesData.length; i++){
+      var someRow = generateRowData([storeLocation.hourlySalesData[i].time, storeLocation.hourlySalesData[i].pizzaSold, storeLocation.hourlySalesData[i].pizzaDelivered, storeLocation.hourlySalesData[i].driversNeeded]);
+      someTable.appendChild(someRow);
+    }
+  }
+
+  makeTable(ballard, 'ballardTable');
+  makeTable(firstHill, 'firstHillTable');
+  makeTable(international, 'internationalTable');
+  makeTable(sLU, 'sluTable');
+  makeTable(georgetown, 'georgetownTable');
+  makeTable(ravenna, 'ravennaTable');
 }
 
-function makeTable(storeLocation, storeID){
+////SALES-DATA DOM STUFF ABOVE HERE
 
-  var someTable = document.getElementById(storeID);
-  for (var i = 0; i < storeLocation.hourlySalesData.length; i++){
-    var someRow = generateRowData([storeLocation.hourlySalesData[i].time, storeLocation.hourlySalesData[i].pizzaSold, storeLocation.hourlySalesData[i].pizzaDelivered, storeLocation.hourlySalesData[i].driversNeeded]);
-    someTable.appendChild(someRow);
-  }
-}
 
-makeTable(ballard, 'ballardTable');
-makeTable(firstHill, 'firstHillTable');
-makeTable(international, 'internationalTable');
-makeTable(sLU, 'sluTable');
-makeTable(georgetown, 'georgetownTable');
-makeTable(ravenna, 'ravennaTable');
-
+////INDEX DOM STUFF BELOW
 function addOdysseys(storeLocation){
   for (var i = 0; i < storeLocation.hourlySalesData.length; i++){
     pizzaOdysseys += storeLocation.hourlySalesData[i].pizzaSold;
   }
 }
 
-addOdysseys(ballard);
-addOdysseys(firstHill);
-addOdysseys(international);
-addOdysseys(sLU);
-addOdysseys(georgetown);
-addOdysseys(ravenna);
-
-document.getElementById('odysseys').textContent = pizzaOdysseys + ' happy pizza odysseys this week!';
+if (odysseysID){
+  addOdysseys(ballard);
+  addOdysseys(firstHill);
+  addOdysseys(international);
+  addOdysseys(sLU);
+  addOdysseys(georgetown);
+  addOdysseys(ravenna);
+  odysseysID.textContent = pizzaOdysseys + ' happy pizza odysseys this week!';
+}
+////INDEX DOM STUFF ABOVE

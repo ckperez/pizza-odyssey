@@ -188,5 +188,4 @@ addOdysseys(sLU);
 addOdysseys(georgetown);
 addOdysseys(ravenna);
 
-
-document.getElementById('odysseys').textContent = pizzaOdysseys, ' happy pizza odysseys this week!';
+document.getElementById('odysseys').textContent = pizzaOdysseys + ' happy pizza odysseys this week!';

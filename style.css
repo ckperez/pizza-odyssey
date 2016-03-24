@@ -9,6 +9,10 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #515151;
   color: #131313;
+  max-width: 960px;
+}
+article {
+  float: left;
 }
  table, tr, th, td {
    border: 1px solid black;
@@ -19,6 +23,8 @@ body {
  }
 table {
   margin-bottom: 12px;
+  background-color: #F9F9F9;
+  width: 540px;
 }
 
 .locationName {
@@ -32,9 +38,21 @@ table {
    background-color: #FF4D00;
  }
 
-table {
-  background-color: #F9F9F9;
+aside {
+  margin-top:60px;
+  width: 300px;
+  float: right;
+  text-align: justify;
 }
+
+label, input {
+  margin: 6px;
+}
+
+input {
+  width: 240px;
+}
+
 /*Below here is some stuff for index.html*/
 
 header h1 {

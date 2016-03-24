@@ -188,7 +188,6 @@ if (ballardTableID || firstHillTableID || internationalTableID || sluTableID || 
 
 ////SALES-DATA DOM STUFF ABOVE HERE
 
-
 ////INDEX DOM STUFF BELOW
 function addOdysseys(storeLocation){
   for (var i = 0; i < storeLocation.hourlySalesData.length; i++){

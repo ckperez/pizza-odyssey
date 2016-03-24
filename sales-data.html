@@ -72,7 +72,47 @@
           </tr>
         </table>
       </section>
+      <section>
+        <table id="fremontTable">
+          <h1 class="locationName">Fremont</h1>
+          <tr>
+            <th>Time</th>
+            <th>Pizzas Sold</th>
+            <th>Pizzas Delivered</th>
+            <th>Drivers Recommended</th>
+          </tr>
+        </table>
+      </section>
     </article>
+    <aside>
+      <form id="updateFremontForm">
+        <fieldset>
+          <legend>New Info for Fremont</legend>
+
+          <label name="hourForm">Business Hour:</label>
+          <br />
+          <input name="hourForm" type="text" placeholder="Example: 11:00 am">
+          <br />
+          <label name="minSoldForm">Minimum 'Zas Sold:</label>
+          <br />
+          <input name="minSoldForm" type="number">
+          <br />
+          <label name="maxSoldForm">Maximum 'Zas Sold:</label>
+          <br />
+          <input name="maxSoldForm" type="number">
+          <br />
+          <label name="minDeliveredForm">Minimum 'Zas Delivered:</label>
+          <br />
+          <input name="minDeliveredForm" type="number">
+          <br />
+          <label name="maxDeliveredForm">Maximum 'Zas Delivered:</label>
+          <br />
+          <input name="maxDeliveredForm" type="number">
+          <br />
+          <button type="submit">Add New Row</button>
+        </fieldset>
+      </form>
+    </aside>
     <script src="app.js"></script>
   </body>
 </html>

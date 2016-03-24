@@ -1,6 +1,6 @@
 var ballard, firstHill, international, sLU, georgetown, ravenna;
 var locationsArray = [ballard, firstHill, international, sLU, georgetown, ravenna];
-var pizzaOddyseys;
+var pizzaOdysseys = 0;
 //random number function used to generate pizza sold and delivered numbers
 function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -174,3 +174,19 @@ makeTable(international, 'internationalTable');
 makeTable(sLU, 'sluTable');
 makeTable(georgetown, 'georgetownTable');
 makeTable(ravenna, 'ravennaTable');
+
+function addOdysseys(storeLocation){
+  for (var i = 0; i < storeLocation.hourlySalesData.length; i++){
+    pizzaOdysseys += storeLocation.hourlySalesData[i].pizzaSold;
+  }
+}
+
+addOdysseys(ballard);
+addOdysseys(firstHill);
+addOdysseys(international);
+addOdysseys(sLU);
+addOdysseys(georgetown);
+addOdysseys(ravenna);
+
+
+document.getElementById('odysseys').textContent = pizzaOdysseys, ' happy pizza odysseys this week!';

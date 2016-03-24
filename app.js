@@ -1,5 +1,6 @@
 var ballard, firstHill, international, sLU, georgetown, ravenna;
-
+var locationsArray = [ballard, firstHill, international, sLU, georgetown, ravenna];
+var pizzaOddyseys;
 //random number function used to generate pizza sold and delivered numbers
 function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -16,7 +17,6 @@ function HourlySalesData(time, minSold, maxSold, minDelivered, maxDelivered){
   this.pizzaDelivered = getRandomIntInclusive(minDelivered, maxDelivered);
   this.driversNeeded = Math.ceil(this.pizzaDelivered / 3); //this works because it is below this.pizzaDelivered
 }
-
 //method on the prototype of PizzaLocation to push HourlySalesData into array
 PizzaLocation.prototype.pushHourlySalesData = function(data){
   this.hourlySalesData.push(data);
@@ -42,7 +42,6 @@ ballard.pushHourlySalesData(new HourlySalesData('10:00 pm', 1, 3, 4, 12));
 ballard.pushHourlySalesData(new HourlySalesData('11:00 pm', 8, 15, 6, 16));
 ballard.pushHourlySalesData(new HourlySalesData('12:00 am', 8, 15, 6, 16));
 ballard.pushHourlySalesData(new HourlySalesData('1:00 am', 8, 15, 6, 16));
-
 //creating First Hill with constructor
 firstHill = new PizzaLocation('First Hill');
 //calling the pushHourlySalesData method with completed HourlySalesData constructor as data
@@ -64,7 +63,6 @@ firstHill.pushHourlySalesData(new HourlySalesData('10:00 pm', 1, 3, 5, 12));
 firstHill.pushHourlySalesData(new HourlySalesData('11:00 pm', 8, 20, 6, 16));
 firstHill.pushHourlySalesData(new HourlySalesData('12:00 am', 8, 20, 6, 16));
 firstHill.pushHourlySalesData(new HourlySalesData('1:00 am', 8, 20, 6, 16));
-
 //creating International District with constructor
 international = new PizzaLocation('International District');
 //calling the pushHourlySalesData method with completed HourlySalesData constructor as data
@@ -86,7 +84,6 @@ international.pushHourlySalesData(new HourlySalesData('10:00 pm', 8, 22, 7, 15))
 international.pushHourlySalesData(new HourlySalesData('11:00 pm', 0, 2, 2, 8));
 international.pushHourlySalesData(new HourlySalesData('12:00 am', 0, 2, 2, 8));
 international.pushHourlySalesData(new HourlySalesData('1:00 am', 0, 2, 2, 8));
-
 //creating South Lake Union with constructor
 sLU = new PizzaLocation('South Lake Union');
 //calling the pushHourlySalesData method with completed HourlySalesData constructor as data
@@ -108,7 +105,6 @@ sLU.pushHourlySalesData(new HourlySalesData('10:00 pm', 22, 36, 5, 22));
 sLU.pushHourlySalesData(new HourlySalesData('11:00 pm', 5, 21, 16, 31));
 sLU.pushHourlySalesData(new HourlySalesData('12:00 am', 5, 21, 16, 31));
 sLU.pushHourlySalesData(new HourlySalesData('1:00 am', 5, 21, 16, 31));
-
 //creating Georgetown with constructor
 georgetown = new PizzaLocation('Georgetown');
 //calling the pushHourlySalesData method with completed HourlySalesData constructor as data
@@ -130,7 +126,6 @@ georgetown.pushHourlySalesData(new HourlySalesData('10:00 pm', 22, 41, 15, 42));
 georgetown.pushHourlySalesData(new HourlySalesData('11:00 pm', 15, 20, 6, 21));
 georgetown.pushHourlySalesData(new HourlySalesData('12:00 am', 15, 20, 6, 21));
 georgetown.pushHourlySalesData(new HourlySalesData('1:00 am', 15, 20, 6, 21));
-
 //creating Ravenna with constructor
 ravenna = new PizzaLocation('Ravenna');
 //calling the pushHourlySalesData method with completed HourlySalesData constructor as data
@@ -153,8 +148,6 @@ ravenna.pushHourlySalesData(new HourlySalesData('11:00 pm', 2, 4, 3, 11));
 ravenna.pushHourlySalesData(new HourlySalesData('12:00 am', 2, 4, 3, 11));
 ravenna.pushHourlySalesData(new HourlySalesData('1:00 am', 2, 4, 3, 11));
 
-//
-
 function generateRowData(inputArray){
   var row = document.createElement('tr');
   var col;
@@ -165,8 +158,19 @@ function generateRowData(inputArray){
   }
   return row;
 }
-var ballardTable = document.getElementById('ballardTable');
-for (var i = 0; i < ballard.hourlySalesData.length; i++){
-  var someRow = generateRowData([ballard.hourlySalesData[i].time, ballard.hourlySalesData[i].pizzaSold, ballard.hourlySalesData[i].pizzaDelivered, ballard.hourlySalesData[i].driversNeeded]);
-  ballardTable.appendChild(someRow);
+
+function makeTable(storeLocation, storeID){
+
+  var someTable = document.getElementById(storeID);
+  for (var i = 0; i < storeLocation.hourlySalesData.length; i++){
+    var someRow = generateRowData([storeLocation.hourlySalesData[i].time, storeLocation.hourlySalesData[i].pizzaSold, storeLocation.hourlySalesData[i].pizzaDelivered, storeLocation.hourlySalesData[i].driversNeeded]);
+    someTable.appendChild(someRow);
+  }
 }
+
+makeTable(ballard, 'ballardTable');
+makeTable(firstHill, 'firstHillTable');
+makeTable(international, 'internationalTable');
+makeTable(sLU, 'sluTable');
+makeTable(georgetown, 'georgetownTable');
+makeTable(ravenna, 'ravennaTable');

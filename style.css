@@ -11,10 +11,10 @@ body {
   color: #131313;
   max-width: 960px;
 }
-article {
+#salesDataArticle{
   float: left;
 }
- table, tr, th, td {
+table, tr, td {
    border: 1px solid black;
    border-collapse: collapse;
    margin-left: auto;
@@ -27,11 +27,17 @@ table {
   width: 540px;
 }
 
+#odysseys {
+  font-size: 30px;
+  color: #131313;
+}
+
 .locationName {
   font-size: 30px;
   color: #FF4D00;
   font-weight: 400;
   margin-bottom: 0px;
+  text-align: center;
 }
 
  th {
@@ -75,7 +81,7 @@ ul, li {
   padding: 2px;
 }
 
-.locations-and-hours {
+#locations-and-hours {
   background-color: #F9F9F9;
   border-radius: 10px;
   width: 500px;

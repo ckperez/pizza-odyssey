@@ -188,23 +188,65 @@ if (ballardTableID || firstHillTableID || internationalTableID || sluTableID || 
 
 
 //TEMPORARY SPOT FOR NEW TABLE CODE BELOW
-var storeNameInput = document.getElementById('createStoreForm');
-
-function useStoreConstructor(event){
+function collectPizzaLocationData(event){
   event.preventDefault();
-  
+
+  var pizzaLocationName = event.target.storeNameForm.value;
+  var minSold8a = event.target.minSoldForm8aBlock.value;
+  var maxSold8a = event.target.maxSoldForm8aBlock.value;
+  var minSold11a = event.target.minSoldForm11aBlock.value;
+  var maxSold11a = event.target.maxSoldForm11aBlock.value;
+  var minSold2p = event.target.minSoldForm2pBlock.value;
+  var maxSold2p = event.target.maxSoldForm2pBlock.value;
+  var minSold5p = event.target.minSoldForm5pBlock.value;
+  var maxSold5p = event.target.maxSoldForm5pBlock.value;
+  var minSold8p = event.target.minSoldForm8pBlock.value;
+  var maxSold8p = event.target.maxSoldForm8pBlock.value;
+  var minSold11p = event.target.minSoldForm11pBlock.value;
+  var maxSold11p = event.target.maxSoldForm11pBlock.value;
+  var minDelivered8a = event.target.minDeliveredForm8aBlock.value;
+  var maxDelivered8a = event.target.maxDeliveredForm8aBlock.value;
+  var minDelivered11a = event.target.minDeliveredForm11aBlock.value;
+  var maxDelivered11a = event.target.maxDeliveredForm11aBlock.value;
+  var minDelivered2p = event.target.minDeliveredForm2pBlock.value;
+  var maxDelivered2p = event.target.maxDeliveredForm2pBlock.value;
+  var minDelivered5p = event.target.minDeliveredForm5pBlock.value;
+  var maxDelivered5p = event.target.maxDeliveredForm5pBlock.value;
+  var minDelivered8p = event.target.minDeliveredForm8pBlock.value;
+  var maxDelivered8p = event.target.maxDeliveredForm8pBlock.value;
+  var minDelivered11p = event.target.minDeliveredForm11pBlock.value;
+  var maxDelivered11p = event.target.maxDeliveredForm11pBlock.value;
+
+  pizzaLocationName = new PizzaLocation(pizzaLocationName);
+  console.log(pizzaLocationName);
+
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('8:00 am', minSold8a, maxSold8a, minDelivered8a, maxDelivered8a));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('9:00 am', minSold8a, maxSold8a, minDelivered8a, maxDelivered8a));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('10:00 am', minSold8a, maxSold8a, minDelivered8a, maxDelivered8a));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('11:00 am', minSold11a, maxSold11a, minDelivered11a, maxDelivered11a));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('12:00 pm', minSold11a, maxSold11a, minDelivered11a, maxDelivered11a));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('1:00 pm', minSold11a, maxSold11a, minDelivered11a, maxDelivered11a));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('2:00 pm', minSold2p, maxSold2p, minDelivered2p, maxDelivered2p));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('3:00 pm', minSold2p, maxSold2p, minDelivered2p, maxDelivered2p));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('4:00 pm', minSold2p, maxSold2p, minDelivered2p, maxDelivered2p));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('5:00 pm', minSold5p, maxSold5p, minDelivered5p, maxDelivered5p));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('6:00 pm', minSold5p, maxSold5p, minDelivered5p, maxDelivered5p));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('7:00 pm', minSold5p, maxSold5p, minDelivered5p, maxDelivered5p));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('8:00 pm', minSold8p, maxSold8p, minDelivered8p, maxDelivered8p));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('9:00 pm', minSold8p, maxSold8p, minDelivered8p, maxDelivered8p));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('10:00 pm', minSold8p, maxSold8p, minDelivered8p, maxDelivered8p));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('11:00 pm', minSold11p, maxSold11p, minDelivered11p, maxDelivered11p));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('12:00 am', minSold11p, maxSold11p, minDelivered11p, maxDelivered11p));
+  pizzaLocationName.pushHourlySalesData(new HourlySalesData('1:00 am', minSold11p, maxSold11p, minDelivered11p, maxDelivered11p));
+
+  makeTable(pizzaLocationName, 'tableFromForm');
+  document.getElementById('tableFromFormHeader').textContent = pizzaLocationName.name;
+
 }
 
-
-
-storeNameInput.addEventListener('submit', useStoreConstructor);
-
-
-
-
-
-//TEMPORARY SPOT FOR NEW TABLE CODE BELOW
-
+var createPizzaLocationTable = document.getElementById('createStoreForm');
+createPizzaLocationTable.addEventListener('submit', collectPizzaLocationData);
+//TEMPORARY SPOT FOR NEW TABLE CODE ABOVE
 
 ////SALES-DATA DOM STUFF ABOVE HERE
 

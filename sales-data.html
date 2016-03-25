@@ -72,6 +72,17 @@
           </tr>
         </table>
       </section>
+      <section>
+        <table id="tableFromForm">
+          <h1 class="locationName" id="tableFromFormHeader"></h1>
+          <tr>
+            <th>Time</th>
+            <th>Pizzas Sold</th>
+            <th>Pizzas Delivered</th>
+            <th>Drivers Recommended</th>
+          </tr>
+        </table>
+      </section>
     </article>
     <aside>
       <form id="createStoreForm">
@@ -79,36 +90,103 @@
           <legend>Create Table for New Store</legend>
           <label name="storeNameForm">Name of Store Location</label>
           <br />
-          <input name="storeNameForm" type="text">
-          <button type="submit">Create New Store Location</button>
-        </fieldset>
-      </form>
-      <form id="updateNewStoreForm">
-        <fieldset>
-          <legend>New Info for Store</legend>
-          <label name="whichStore">Which store is this for?</label>
+          <input name="storeNameForm" type="text" class="storeNameInput">
           <br />
-          <input name="whichStore" type="text" placeholder="Must be as displayed above table">
+          <label name="minSoldForm8aBlock">Minimum 'Zas Sold 8:00am-11:00am:</label>
           <br />
-          <label name="hourForm">Business Hour:</label>
+          <input name="minSoldForm8aBlock" type="number">
           <br />
-          <input name="hourForm" type="text" placeholder="Example: 11:00 am">
+          <label name="maxSoldForm8aBlock">Maximum 'Zas Sold 8:00am-11:00am:</label>
           <br />
-          <label name="minSoldForm">Minimum 'Zas Sold:</label>
+          <input name="maxSoldForm8aBlock" type="number">
           <br />
-          <input name="minSoldForm" type="number">
+          <label name="minDeliveredForm8aBlock">Minimum 'Zas Delivered 8:00am-11:00am:</label>
           <br />
-          <label name="maxSoldForm">Maximum 'Zas Sold:</label>
+          <input name="minDeliveredForm8aBlock" type="number">
           <br />
-          <input name="maxSoldForm" type="number">
+          <label name="maxDeliveredForm8aBlock">Maximum 'Zas Delivered 8:00am-11:00am:</label>
           <br />
-          <label name="minDeliveredForm">Minimum 'Zas Delivered:</label>
+          <input name="maxDeliveredForm8aBlock" type="number">
           <br />
-          <input name="minDeliveredForm" type="number">
+          <label name="minSoldForm11aBlock">Minimum 'Zas Sold 11:00am-2:00pm:</label>
           <br />
-          <label name="maxDeliveredForm">Maximum 'Zas Delivered:</label>
+          <input name="minSoldForm11aBlock" type="number">
           <br />
-          <input name="maxDeliveredForm" type="number">
+          <label name="maxSoldForm11aBlock">Maximum 'Zas Sold 11:00am-2:00pm:</label>
+          <br />
+          <input name="maxSoldForm11aBlock" type="number">
+          <br />
+          <label name="minDeliveredForm11aBlock">Minimum 'Zas Delivered 11:00am-2:00pm:</label>
+          <br />
+          <input name="minDeliveredForm11aBlock" type="number">
+          <br />
+          <label name="maxDeliveredForm11aBlock">Maximum 'Zas Delivered 11:00am-2:00pm:</label>
+          <br />
+          <input name="maxDeliveredForm11aBlock" type="number">
+          <br />
+          <label name="minSoldForm2pBlock">Minimum 'Zas Sold 2:00pm-5:00pm:</label>
+          <br />
+          <input name="minSoldForm2pBlock" type="number">
+          <br />
+          <label name="maxSoldForm2pBlock">Maximum 'Zas Sold 2:00pm-5:00pm:</label>
+          <br />
+          <input name="maxSoldForm2pBlock" type="number">
+          <br />
+          <label name="minDeliveredForm2pBlock">Minimum 'Zas Delivered 2:00pm-5:00pm:</label>
+          <br />
+          <input name="minDeliveredForm2pBlock" type="number">
+          <br />
+          <label name="maxDeliveredForm2pBlock">Maximum 'Zas Delivered 2:00pm-5:00pm:</label>
+          <br />
+          <input name="maxDeliveredForm2pBlock" type="number">
+          <br />
+          <label name="minSoldForm5pBlock">Minimum 'Zas Sold 5:00pm-8:00pm:</label>
+          <br />
+          <input name="minSoldForm5pBlock" type="number">
+          <br />
+          <label name="maxSoldForm5pBlock">Maximum 'Zas Sold 5:00pm-8:00pm:</label>
+          <br />
+          <input name="maxSoldForm5pBlock" type="number">
+          <br />
+          <label name="minDeliveredForm5pBlock">Minimum 'Zas Delivered 5:00pm-8:00pm:</label>
+          <br />
+          <input name="minDeliveredForm5pBlock" type="number">
+          <br />
+          <label name="maxDeliveredForm5pBlock">Maximum 'Zas Delivered 5:00pm-8:00pm:</label>
+          <br />
+          <input name="maxDeliveredForm5pBlock" type="number">
+          <br />
+          <label name="minSoldForm8pBlock">Minimum 'Zas Sold 8:00pm-11:00pm:</label>
+          <br />
+          <input name="minSoldForm8pBlock" type="number">
+          <br />
+          <label name="maxSoldForm8pBlock">Maximum 'Zas Sold 8:00pm-11:00pm:</label>
+          <br />
+          <input name="maxSoldForm8pBlock" type="number">
+          <br />
+          <label name="minDeliveredForm8pBlock">Minimum 'Zas Delivered 8:00pm-11:00pm:</label>
+          <br />
+          <input name="minDeliveredForm8pBlock" type="number">
+          <br />
+          <label name="maxDeliveredForm8pBlock">Maximum 'Zas Delivered 8:00pm-11:00pm:</label>
+          <br />
+          <input name="maxDeliveredForm8pBlock" type="number">
+          <br />
+          <label name="minSoldForm11pBlock">Minimum 'Zas Sold 11:00pm-2:00am:</label>
+          <br />
+          <input name="minSoldForm11pBlock" type="number">
+          <br />
+          <label name="maxSoldForm11pBlock">Maximum 'Zas Sold 11:00pm-2:00am:</label>
+          <br />
+          <input name="maxSoldForm11pBlock" type="number">
+          <br />
+          <label name="minDeliveredForm11pBlock">Minimum 'Zas Delivered 11:00pm-2:00am:</label>
+          <br />
+          <input name="minDeliveredForm11pBlock" type="number">
+          <br />
+          <label name="maxDeliveredForm11pBlock">Maximum 'Zas Delivered 11:00pm-2:00am:</label>
+          <br />
+          <input name="maxDeliveredForm11pBlock" type="number">
           <br />
           <button type="submit">Add New Row</button>
         </fieldset>

@@ -40,9 +40,9 @@ table {
 
 aside {
   margin-top:60px;
-  width: 300px;
+  width: 360px;
   float: right;
-  text-align: justify;
+  text-align: left;
 }
 
 form {
@@ -53,8 +53,12 @@ label, input {
   margin: 6px;
 }
 
-input {
-  width: 240px;
+input:not([class]) {
+  width: 60px;
+}
+
+.storeNameInput {
+  width: 90%;
 }
 
 /*Below here is some stuff for index.html*/

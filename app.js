@@ -251,17 +251,16 @@ if (formPageID){
     pizzaLocationName.pushHourlySalesData(new HourlySalesData('1:00 am', minSold11p, maxSold11p, minDelivered11p, maxDelivered11p));
 
     var updatedID = pizzaLocationName.name;
-    updatedID = updatedID.split(' ');
-    updatedID = updatedID.join('');
-    updatedID = updatedID.toLowerCase();
-    updatedID = updatedID + 'Table';
+    updatedID = updatedID.split(' ').join('').toLowerCase() + 'Table';
 
     var createdTable = document.createElement('table');
     createdTable.setAttribute('id', updatedID);
+    createdTable.setAttribute('class', 'dataTable');
     var createdTableTR = document.createElement('tr');
     createdTable.appendChild(createdTableTR);
     var labelRow = document.createElement('th');
     labelRow.setAttribute('class', 'locationName');
+    labelRow.setAttribute('colspan', '4');
     labelRow.textContent = pizzaLocationName.name;
     createdTableTR.appendChild(labelRow);
     var topRow = document.createElement('tr');
@@ -306,6 +305,6 @@ if (mainPageID){
   addOdysseys(sLU);
   addOdysseys(georgetown);
   addOdysseys(ravenna);
-  odysseysID.textContent = pizzaOdysseys + ' happy pizza odysseys this week!';
+  odysseysID.textContent = pizzaOdysseys * 6 + ' happy pizza odysseys this week!';
 }
 ////INDEX DOM STUFF ABOVE

@@ -109,3 +109,17 @@ ul, li {
   list-style: none;
   padding: 2px;
 }
+
+.sneakyLink {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 100;
+  left: 522px;
+  top: 55px;
+}
+
+.sneakyLink:hover {
+  cursor: crosshair;
+}
